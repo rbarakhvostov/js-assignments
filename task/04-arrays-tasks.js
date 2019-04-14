@@ -589,11 +589,15 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
+   if (arr.length === 1) return arr;
     const p = Math.floor(arr.length / 2);
     const head = arr.slice(0, p);
-    const tail = arr.slice(p);
-    if (arr.length & 1) return [...tail, arr[p], ...head];
-    else return [...tail, arr[p], ...head];
+    let tail = arr.slice(p);
+    if (arr.length & 1) {
+      tail  = arr.slice(p + 1);
+      return [...tail, arr[p], ...head];
+    }; 
+    return [...tail, ...head];
 }
 
 
